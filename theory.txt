@@ -1,0 +1,8 @@
+concurrency : 
+processes running in the manner of context switching. Single core is enough. 
+
+paralleslism: 
+multiple cores are utilised to accomplish the given task
+
+resources: 
+https://www.digitalocean.com/community/tutorials/how-to-run-multiple-functions-concurrently-in-go
