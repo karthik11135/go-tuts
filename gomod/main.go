@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+
 	"github.com/gorilla/mux"
 )
 
@@ -19,6 +20,8 @@ func main() {
 	r.HandleFunc("/params/{id}", readParams).Methods("GET")
 
 	r.HandleFunc("/post", postController).Methods("POST")
+
+	r.HandleFunc("/query", getQueryStr).Methods("GET")
 
 	http.ListenAndServe(":3000", r)
 }
@@ -76,4 +79,11 @@ func postController(w http.ResponseWriter, r *http.Request) {
 	json.NewDecoder(r.Body).Decode(&person);
 
 	fmt.Println(person)
+}
+
+func getQueryStr(w http.ResponseWriter, r *http.Request) {
+	hasFirst := r.URL.Query().Has("first")
+	fmt.Println(hasFirst)
+	first := r.URL.Query().Get("first")
+	fmt.Println(first)
 }
